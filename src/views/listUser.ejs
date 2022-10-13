@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>list User</title>
+</head>
+
+<body>
+    <div class="wrap-conten">
+        <table class="list-user">
+            <thead>
+                <tr>
+                    <th>first Name</th>
+                    <th>last Name</th>
+                    <th>email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(i=0 ; i< dataUsers.length ; i++) { %>
+                    <tr>
+                        <td>
+                            <%=dataUsers[i].firstName %>
+                        </td>
+                        <td>
+                            <%=dataUsers[i].lastName %>
+                        </td>
+                        <td>
+                            <%=dataUsers[i].email %>
+                        </td>
+                    </tr>
+                    <% }%>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
