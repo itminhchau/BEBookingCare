@@ -40,7 +40,7 @@ let editUser = async (req, res) => {
 }
 
 let deleteUser = async (req, res) => {
-    let idUser = req.query.id
+    let idUser = req.body.id
     await userService.deleteUserService(idUser)
     return res.redirect('/user')
 }

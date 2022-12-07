@@ -5,14 +5,15 @@ var salt = bcrypt.genSaltSync(10);
 let createUserService = async (data) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let edPassWord = await hashPassWord(data.passWord)
+            let edPassWord = await hashPassWord(data.password)
+            console.log(data.password);
             await db.User.create({
                 email: data.email,
                 password: edPassWord,
                 firstName: data.firstName,
                 lastName: data.lastName,
                 address: data.address,
-                phonenumber: data.phoneNumber,
+                phonenumber: data.phonenumber,
                 gender: data.gender === '1' ? true : false,
                 roleid: data.roleid,
             })
@@ -26,7 +27,7 @@ let createUserService = async (data) => {
 let hashPassWord = (passWord) => {
     return new Promise(async (resolve, reject) => {
         try {
-            var passWordHashed = await bcrypt.hashSync(`${passWord}`, salt);
+            var passWordHashed = await bcrypt.hashSync(passWord, salt);
             resolve(passWordHashed)
         } catch (error) {
             reject(error)
@@ -93,5 +94,6 @@ export default {
     getAllUserService,
     getUserService,
     getEditUserService,
-    deleteUserService
+    deleteUserService,
+
 }
